@@ -10,32 +10,40 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @Controller
 public class PatientController {
 
     @Autowired
     private PatientRepository patientRepository;
 
-    @GetMapping(path = "/index")
-    public String index(){
-
-        return "index";
+    @GetMapping(path = "/deletePatient")
+    public String delete(Long id){
+        patientRepository.deleteById(id);
+        return "redirect:/pat?";
     }
 
     @GetMapping(path = "/pat")
-    public String List(Model model,
-    /*ces Parametre pour faire la pagination ,
+       /*ces Parametre pour faire la pagination ,
      size pour chaque page on affiche 5 resultats*/
-    @RequestParam(name = "page", defaultValue = "0") int page,
-    @RequestParam(name = "size", defaultValue = "5") int size)
+    public String List(Model model,
+                @RequestParam(name = "page", defaultValue = "0") int page,
+                @RequestParam(name = "size", defaultValue = "6") int size,
+                @RequestParam(name = "keyword", defaultValue = "") String mc)
     {
-        Page<Patient> pagePatients = patientRepository.findAll(PageRequest.of(page,size));
+        Page<Patient> pagePatients =
+         patientRepository.findByNomContains(mc, PageRequest.of(page, size));
         // Stocker les Patients dans le Model
         model.addAttribute("patients",pagePatients.getContent());
-        model.addAttribute("pages",new int[pagePatients.getTotalPages()]); // Retourne le nombre Tital de pages
-
+        // Retourne le nombre Total de pages
+        model.addAttribute("pages",new int[pagePatients.getTotalPages()]);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("size",size);
+        model.addAttribute("keyword",mc);
         return "patients";
     }
+    /*
+        Pour Supprimer un Enregistrement
+     */
+
+
 }

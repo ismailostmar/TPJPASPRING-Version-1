@@ -45,10 +45,10 @@ public class TpJpaApplication implements CommandLineRunner {
 		System.out.println(patient.getNom());
 
         System.out.println("*****************************");
-		List<Patient> patients = patientRepository.findByNomContains("K");
-		patients.forEach(p->{
-			System.out.println(p.toString());
-		});
+//		List<Patient> patients = patientRepository.findByNomContains("K");
+//		patients.forEach(p->{
+//			System.out.println(p.toString());
+//		});
 
 		// on cherche les patients avec la maladie
 		System.out.println("*****************************");

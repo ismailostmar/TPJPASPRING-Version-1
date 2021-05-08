@@ -1,5 +1,4 @@
 package ma.emsi.TpJPA.Controller;
-
 import ma.emsi.TpJPA.entities.Patient;
 import ma.emsi.TpJPA.repositoriesDAO.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +14,14 @@ public class PatientController {
 
     @Autowired
     private PatientRepository patientRepository;
-
+     /*
+        Pour Supprimer un Enregistrement
+     */
     @GetMapping(path = "/deletePatient")
     public String delete(Long id){
         patientRepository.deleteById(id);
         return "redirect:/pat?";
     }
-
     @GetMapping(path = "/pat")
        /*ces Parametre pour faire la pagination ,
      size pour chaque page on affiche 5 resultats*/
@@ -41,9 +41,4 @@ public class PatientController {
         model.addAttribute("keyword",mc);
         return "patients";
     }
-    /*
-        Pour Supprimer un Enregistrement
-     */
-
-
 }

@@ -22,6 +22,13 @@ public class PatientController {
         patientRepository.deleteById(id);
         return "redirect:/pat?";
     }
+
+//    @GetMapping(path = "/save")
+//    public String save(String name){
+//        patientRepository.saveByNom(name);
+//        return "redirect:/pat?";
+//    }
+    
     @GetMapping(path = "/pat")
        /*ces Parametre pour faire la pagination ,
      size pour chaque page on affiche 5 resultats*/

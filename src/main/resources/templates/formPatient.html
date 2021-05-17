@@ -13,17 +13,17 @@
         <form th:action="@{savePatient}" method="post">
             <div class="form-group">
                 <label class="control-label">Nom Patient : </label>
-                <input type="text" name="name" class="form-control" th:value="${patient.nom}" required>
+                <input type="text" name="nom" class="form-control" th:value="${patient.nom}" required>
                 <span></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Date de Naissance : </label>
-                <input type="date" name="dateN" class="form-control" th:value="${patient.dateNaissance}" required>
+                <input type="date" name="dateNaissance" class="form-control" th:value="${patient.dateNaissance}" required>
                 <span></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Est-ce-qu'il est Malade : </label>
-                <input type="checkbox" name="checkMalade" th:checked="${patient.malade}">
+                <input type="checkbox" name="malade" th:checked="${patient.malade}">
                 <span></span>
             </div>
             <button class="btn btn-success" type="submit">Save</button>

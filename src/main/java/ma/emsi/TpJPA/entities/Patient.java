@@ -2,6 +2,8 @@ package ma.emsi.TpJPA.entities;
 
 import java.util.Date;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
 @Entity // Anotations JPA
@@ -12,12 +14,10 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
     private String nom;
-    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance;
-    @Column(nullable = false)
     private boolean malade;
 }
 

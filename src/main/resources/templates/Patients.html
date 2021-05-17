@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr"
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="MasterPage.html">
@@ -22,13 +22,13 @@
                     </form>
                         <table class="table">
                             <tr class="table-info">                                                                                         
-                                <th>ID</th><th>Name</th><th>Date Naissance</th><th>Malade</th>                                              
+                                <th>ID</th><th>Name</th><th>Date Naissance</th><th>Malade</th>
                             </tr>
                             <tr th:each="p:${patients}">                                                                                    
                                 <td th:text="${p.id}"> </td>                                                                                
                                 <td th:text="${p.nom}"> </td>                                                                               
-                                <td th:text="${p.dateNaissance}"> </td>                                                                     
-                                <td th:text="${p.malade}"> </td>                                                                            
+                                <td th:text="${p.dateNaissance}"> </td>
+                                <td th:text="${p.malade}"> </td>
                                 <td><a onclick=" return confirm('Etes vous sur de vouloir supprimer ?')"                                    
                                        class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a></td>                        
                             </tr>                                                                                                           

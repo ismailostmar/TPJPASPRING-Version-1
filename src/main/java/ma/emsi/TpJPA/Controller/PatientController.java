@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -14,21 +15,28 @@ public class PatientController {
 
     @Autowired
     private PatientRepository patientRepository;
-     /*
-        Pour Supprimer un Enregistrement
-     */
+
+    // Delete Patient
     @GetMapping(path = "/deletePatient")
     public String delete(Long id){
         patientRepository.deleteById(id);
         return "redirect:/pat?";
     }
 
-//    @GetMapping(path = "/save")
-//    public String save(String name){
-//        patientRepository.saveByNom(name);
-//        return "redirect:/pat?";
-//    }
-    
+    @GetMapping(path = "/formPatient")
+    public String formPatient(Model model) {
+        model.addAttribute("patient", new Patient());
+        return "formPatient";
+    }
+
+    // Add Patient
+     @PostMapping(path = "/savePatient")
+    public String savePatient(Patient patient){
+        patientRepository.save(patient);
+        return "redirect:/pat?";
+    }
+
+    // the Main Page
     @GetMapping(path = "/pat")
        /*ces Parametre pour faire la pagination ,
      size pour chaque page on affiche 5 resultats*/

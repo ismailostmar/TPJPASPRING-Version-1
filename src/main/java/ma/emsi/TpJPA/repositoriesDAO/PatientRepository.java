@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient,Long> {
-    public  Page<Patient> findByNomContains(String mc,Pageable pageable);
-    public List<Patient> findByMalade(boolean b);
-    public List<Patient> findByNomContainsAndMalade(String name, boolean b);
-
+    Page<Patient> findByNomContains(String mc, Pageable pageable);
+    List<Patient> findByMalade(boolean b);
+    List<Patient> findByNomContainsAndMalade(String name, boolean b);
 }

@@ -25,10 +25,10 @@ public class TpJpaApplication implements CommandLineRunner {
 
 		// On Ajoute quelque Patients à l'aide de la Fonction Save();
 
-		patientRepository.save(new Patient(null,"ISMAIL",new Date(),2300,false));
-		patientRepository.save(new Patient(null,"ILYASS",new Date(),2400,false));
-		patientRepository.save(new Patient(null,"AYOUB",new Date(),2500,false));
-		patientRepository.save(new Patient(null,"KARIM",new Date(),2600,true));
+		patientRepository.save(new Patient(null,"ISMAIL",new Date(),false));
+		patientRepository.save(new Patient(null,"ILYASS",new Date(),false));
+		patientRepository.save(new Patient(null,"AYOUB",new Date(),false));
+		patientRepository.save(new Patient(null,"KARIM",new Date(),true));
 
 		System.out.println("**************************");
 

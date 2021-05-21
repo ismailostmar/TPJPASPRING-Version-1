@@ -25,10 +25,10 @@ public class TpJpaApplication implements CommandLineRunner {
 
 		// On Ajoute quelque Patients à l'aide de la Fonction Save();
 
-		patientRepository.save(new Patient(null,"ISMAIL",new Date(),false));
-		patientRepository.save(new Patient(null,"ILYASS",new Date(),false));
-		patientRepository.save(new Patient(null,"AYOUB",new Date(),false));
-		patientRepository.save(new Patient(null,"KARIM",new Date(),true));
+		patientRepository.save(new Patient(null,"ISMAIL",new Date(),false,1000));
+		patientRepository.save(new Patient(null,"ILYASS",new Date(),false,2000));
+		patientRepository.save(new Patient(null,"AYOUB",new Date(),false,3000));
+		patientRepository.save(new Patient(null,"KARIM",new Date(),true,4000));
 
 		System.out.println("**************************");
 
@@ -36,41 +36,41 @@ public class TpJpaApplication implements CommandLineRunner {
 		patientRepository.findAll().forEach(p->{
 			System.out.println(p.toString());
 		});
-
-		System.out.println("*****************************");
-
-		// On Cherche un Patient dont son ID est : 4
-		Patient patient = patientRepository.findById(4L).get();
-		System.out.println(patient.getNom());
-
-        System.out.println("*****************************");
-//		List<Patient> patients = patientRepository.findByNomContains("K");
-//		patients.forEach(p->{
+//
+//		System.out.println("*****************************");
+//
+//		// On Cherche un Patient dont son ID est : 4
+//		Patient patient = patientRepository.findById(4L).get();
+//		System.out.println(patient.getNom());
+//
+//        System.out.println("*****************************");
+////		List<Patient> patients = patientRepository.findByNomContains("K");
+////		patients.forEach(p->{
+////			System.out.println(p.toString());
+////		});
+//
+//		// on cherche les patients avec la maladie
+//		System.out.println("*****************************");
+//		List<Patient> patients1 = patientRepository.findByMalade(false);
+//		patients1.forEach(p->{
 //			System.out.println(p.toString());
 //		});
-
-		// on cherche les patients avec la maladie
-		System.out.println("*****************************");
-		List<Patient> patients1 = patientRepository.findByMalade(false);
-		patients1.forEach(p->{
-			System.out.println(p.toString());
-		});
-
-		// On cherche les Patients avec leurs nom et la maladie
-		System.out.println("*****************************");
-		List<Patient> patients2 = patientRepository.findByNomContainsAndMalade("K",true);
-		patients2.forEach(p->{
-			System.out.println(p.toString());
-		});
-
-		// On Supprime le Patients à partir de son ID
-		//patientRepository.deleteById(3L);
-
-		System.out.println("*****************************");
-		List<Patient> patients4 = patientRepository.findAll();
-		patients4.forEach(p->{
-			System.out.println(p.toString());
-		});
+//
+//		// On cherche les Patients avec leurs nom et la maladie
+//		System.out.println("*****************************");
+//		List<Patient> patients2 = patientRepository.findByNomContainsAndMalade("K",true);
+//		patients2.forEach(p->{
+//			System.out.println(p.toString());
+//		});
+//
+//		// On Supprime le Patients à partir de son ID
+//		//patientRepository.deleteById(3L);
+//
+//		System.out.println("*****************************");
+//		List<Patient> patients4 = patientRepository.findAll();
+//		patients4.forEach(p->{
+//			System.out.println(p.toString());
+//		});
 
 
 

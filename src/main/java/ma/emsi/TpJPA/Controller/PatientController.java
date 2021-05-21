@@ -6,9 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class PatientController {
@@ -30,8 +33,10 @@ public class PatientController {
     }
 
     // Add Patient
+    // BindingResult : est une collection qui contient la liste des erreurs generé au moment de la validation
      @PostMapping(path = "/savePatient")
-    public String savePatient(Patient patient){
+    public String savePatient(@Valid Patient patient, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) return "formPatient";
         patientRepository.save(patient);
         return "redirect:/pat?";
     }

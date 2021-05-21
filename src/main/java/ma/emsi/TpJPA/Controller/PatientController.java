@@ -7,11 +7,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class PatientController {
@@ -29,16 +28,27 @@ public class PatientController {
     @GetMapping(path = "/formPatient")
     public String formPatient(Model model) {
         model.addAttribute("patient", new Patient());
+        model.addAttribute("mode","new");
+        return "formPatient";
+    }
+
+    @GetMapping(path = "/editPatient")
+    public String editPatient(Model model,Long id) {
+        Patient p = patientRepository.findById(id).get();
+        model.addAttribute("patient", p);
+        model.addAttribute("mode","edit");
         return "formPatient";
     }
 
     // Add Patient
-    // BindingResult : est une collection qui contient la liste des erreurs generé au moment de la validation
+    // BindingResult : est une collection qui contient la liste des erreurs
+    // generé au moment de la validation
      @PostMapping(path = "/savePatient")
-    public String savePatient(@Valid Patient patient, BindingResult bindingResult){
+    public String savePatient(@Valid Patient patient,Model model, BindingResult bindingResult){
         if(bindingResult.hasErrors()) return "formPatient";
         patientRepository.save(patient);
-        return "redirect:/pat?";
+        model.addAttribute("patient",patient);
+        return "confirmation";
     }
 
     // the Main Page

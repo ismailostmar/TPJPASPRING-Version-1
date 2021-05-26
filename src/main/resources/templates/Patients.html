@@ -2,6 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       layout:decorator="MasterPage.html">
 <head>
     <meta charset="UTF-8">
@@ -11,18 +12,18 @@
 <div layout:fragment="pageContent">
     <div class="container">
         <div class="card">
-            <div class="card-header"> Listes des Patients </div>
+            <div class="card-header"> Lists of Patient </div>
                 <div class="card-body">
                     <form method="get" th:action="@{pat}">
                         <div class="form-group">
                             <label> Nom </label>
                             <input type="text" name="keyword" th:value="${keyword}">
-                            <button class="btn btn-primary" > Chercher </button>
+                            <button class="btn btn-primary" > Search </button>
                         </div>
                     </form>
                         <table class="table">
                             <tr class="table-info">                                                                                         
-                                <th>ID</th><th>Name</th><th>Date Naissance</th><th>Malade</th><th>score</th>
+                                <th>ID</th><th>Name</th><th>Birthday</th><th>Sick</th><th>score</th>
                             </tr>
                             <tr th:each="p:${patients}">                                                                                    
                                 <td th:text="${p.id}"> </td>                                                                                
@@ -30,7 +31,8 @@
                                 <td th:text="${p.dateNaissance}"> </td>
                                 <td th:text="${p.malade}"> </td>
                                 <td th:text="${p.score}"> </td>
-                                <td><a onclick=" return confirm('Etes vous sur de vouloir supprimer ?')"                                    
+                                <td sec:authorize="hasRole('ADMIN')">
+                                    <a onclick=" return confirm('Are you ok to delete this User ?')"
                                        class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a>
                                 <td>
                                 <a class="btn btn-warning" th:href="@{editPatient(id=${p.id})}">Edit</a>

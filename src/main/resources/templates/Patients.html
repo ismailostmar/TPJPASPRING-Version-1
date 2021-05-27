@@ -34,7 +34,7 @@
                                 <td sec:authorize="hasRole('ADMIN')">
                                     <a onclick=" return confirm('Are you ok to delete this User ?')"
                                        class="btn btn-danger" th:href="@{deletePatient(id=${p.id})}">Delete</a>
-                                <td>
+                                <td sec:authorize="hasRole('ADMIN')">
                                 <a class="btn btn-warning" th:href="@{editPatient(id=${p.id})}">Edit</a>
                             </td>
                             </tr>                                                                                                           

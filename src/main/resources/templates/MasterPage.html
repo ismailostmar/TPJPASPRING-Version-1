@@ -29,7 +29,7 @@
                 Patients
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{formPatient}">Ajouter</a>
+                <a class="dropdown-item" th:href="@{formPatient}" sec:authorize="hasRole('ADMIN')" >Ajouter</a>
             </div>
         </li>
         </ul>

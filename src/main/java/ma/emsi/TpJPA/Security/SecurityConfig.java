@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/pat").hasRole("USER");
         http.exceptionHandling().accessDeniedPage("/403");
         http.authorizeRequests().anyRequest().authenticated();
+        http.csrf(); // for Stopping the context of "CROSS-SITE REQUEST FORGERY" Attacks
     }
 
     // Methods BCrypt to encoding something like password using Bean Annotations

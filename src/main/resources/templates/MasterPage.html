@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Patients</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
@@ -20,7 +20,7 @@
             <a class="nav-link" th:href="@{pat}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Medecins</a>
+            <a class="nav-link" href="#">Medicines</a>
         </li>
 
         <!-- Dropdown -->
@@ -29,15 +29,15 @@
                 Patients
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{formPatient}" sec:authorize="hasRole('ADMIN')" >Ajouter</a>
+                <a class="dropdown-item" th:href="@{formPatient}" sec:authorize="hasRole('ADMIN')">Add</a>
             </div>
         </li>
-        </ul>
+    </ul>
     <!-- Dropdown -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                <span sec:authentication="name"></span>
+            <span class="badge badge-info" sec:authentication="name"></span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item glyphicon " th:href="@{/logout}">Log Out</a>
@@ -48,8 +48,8 @@
     </ul>
 </nav>
 <br>
-    <section layout:fragment="pageContent">
+<section layout:fragment="pageContent">
 
-    </section>
+</section>
 </body>
 </html>
